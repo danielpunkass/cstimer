@@ -60,3 +60,10 @@ docker compose up --build
 ```
 
 Now you can access csTimer at http://localhost:8080/ or https://localhost:8888/. Note that if you use the HTTPS version you will have to "trust" the self-signed certificate.
+
+To build the "dist" version of the app and serve it locally, build with `DEPLOY=1` defined:
+
+```
+cd Docker
+DEPLOY=1 docker compose up --build
+```
