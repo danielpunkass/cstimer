@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:latest AS build
 
 # Update packages and install dependencies
 RUN apk update && apk upgrade && apk add --no-cache \
@@ -12,17 +12,22 @@ WORKDIR /cstimer
 
 # Either build and serve dist or serve local
 ARG DEPLOY=1
-RUN [[ "$DEPLOY" -eq 1 ]] && make dist || echo ""
+RUN [[ "$DEPLOY" -eq 1 ]] && make dist || rm -rf dist/*
 
 # Start a new image to avoid the cruft of java stuff required to build above
 FROM php:fpm-alpine
 
-COPY --from=0 /cstimer /cstimer
+COPY --from=build /cstimer/dist /cstimer/dist
+COPY --from=build /cstimer/src /cstimer/src
+COPY --from=build /cstimer/Docker/ssl-selfsigned.crt /cstimer/Docker/ssl-selfsigned.crt
+COPY --from=build /cstimer/Docker/ssl-selfsigned.key /cstimer/Docker/ssl-selfsigned.key
 
 RUN apk update && apk upgrade && apk add --no-cache \
 	nginx \
     openssl \
-	&& rm -rf /var/cache/apk/*
+	&& rm -rf /var/cache/apk/* \
+	&& find /bin -type f ! -name "sed" ! -name "sh" ! -name "busybox" -exec rm -v {} + \
+	&& find /usr/bin -type f ! -name "sed" ! -name "sh" -exec rm -v {} +
     
 # Configure the host with nginx
 COPY ./Docker/default-conf /etc/nginx/http.d/default.conf
