@@ -34,13 +34,13 @@ $lang = prefered_language(array("en-us", "ar-sa", "bn-bd", "ca-es", "cs-cz", "da
 
 if ($lang == "en-us") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "ar-sa") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "bn-bd") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "ca-es") { ?>
   <meta name="keywords" content="cronòmetre, cstimer, cronòmetre cub de rubik">
   <title> csTimer - Cronòmetre Professional de Speedsolving/Entrenament de Cubs de Rubik </title>
@@ -55,16 +55,16 @@ if ($lang == "en-us") { ?>
   <title> csTimer - Professioneller Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "el-gr") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "es-es") { ?>
   <meta name="keywords" content="Cronómetro, Temporizador, csTimer, Cronómetro para Cubo de Rubik, Cronómetro online, Cronómetro Web, Temporizador para Cubo de Rubik, Temporizador online, Temporizador Web">
   <title> csTimer - Cronómetro profesional de speedcubing y entrenamiento </title>
 <?php } else if ($lang == "fa-ir") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "fi-fi") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "fr-fr") { ?>
   <meta name="keywords" content="timer, cstimer, timer de Rubik's Cube, timer en ligne, timer web">
   <title> csTimer - Timer professionnel de resolution/entrainement au Rubik's Cube </title>
@@ -73,7 +73,7 @@ if ($lang == "en-us") { ?>
   <title> csTimer - טיימר קיובינג מקצועי </title>
 <?php } else if ($lang == "hi-in") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "hr-hr") { ?>
   <meta name="keywords" content="štoperica, cstimer, štoperica rubikove kocke, online štoperica, web štoperica">
   <title> csTimer - Profesionalna štoperica za brzo slaganje Rubikove kocke </title>
@@ -85,16 +85,16 @@ if ($lang == "en-us") { ?>
   <title> csTimer - Cronometro Professionale per Speedcubing/Allenamento </title>
 <?php } else if ($lang == "ja-jp") { ?>
   <meta name="keywords" content="タイマー, cstimer, ルービックキューブタイマー, オンラインタイマー, webタイマー">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "ko-kr") { ?>
   <meta name="keywords" content="타이머, cstimer, 루빅스 큐브 타이머, 온라인 타이머, 웹 타이머">
   <title> csTimer - 큐브 연습용 초시계 </title>
 <?php } else if ($lang == "lv-lv") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "nl-nl") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, webtimer">
-  <title> csTimer - Professional Rubik's Kubus Snelheid/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Kubus Snelheid/Training Timer </title>
 <?php } else if ($lang == "no-no") { ?>
   <meta name="keywords" content="tidtaker, cstidtaker, rubiks kube tidtaker, tidtaker på nett, nett tidtaker">
   <title> CsTimer - Profesjonell Rubik´s kube hurtigløsing/Trening </title>
@@ -103,22 +103,22 @@ if ($lang == "en-us") { ?>
   <title> csTimer - Profesjonalny Timer do Speedsolvingu/Treningu </title>
 <?php } else if ($lang == "pt-pt") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "ro-ro") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "ru-ru") { ?>
   <meta name="keywords" content="таймер, cstimer, таймер для кубика рубика, онлайн таймер, веб-таймер">
   <title> csTimer - Профессиональный тренировочный таймер для кубика Рубика </title>
 <?php } else if ($lang == "sk-sk") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "sl-si") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "sr-sp") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "sv-se") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
   <title> csTimer - Professionell Rubiks kub speedsolving/tränings timer </title>
@@ -127,7 +127,7 @@ if ($lang == "en-us") { ?>
   <title> csTimer - profesyonel Rubik Küpü Çözüm/Antreman Kronometresi </title>
 <?php } else if ($lang == "uk-ua") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } else if ($lang == "vi-vn") { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
   <title> csTimer - Trang tính giờ / huẩn luyện chuyên nghiệp cho rubik's cube solver </title>
@@ -139,7 +139,7 @@ if ($lang == "en-us") { ?>
   <title> csTimer - 專業的魔術方塊速解計時器 </title>
 <?php } else { ?>
   <meta name="keywords" content="timer, cstimer, rubiks cube timer, online timer, web timer">
-  <title> csTimer - Professional Rubik's Cube Speedsolving/Training Timer </title>
+  <title> csTimer - Amateur Hack's Rubik's Cube Speedsolving/Training Timer </title>
 <?php } ?>
   <script type="text/javascript">
 var CSTIMER_VERSION = '<?php echo $version; ?>';
