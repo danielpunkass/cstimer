@@ -44,7 +44,7 @@ gcloud run deploy "${SERVICE_NAME}" \
   --cpu-boost \
   --execution-environment=gen2 \
   --set-env-vars="DEPLOY=1" \
-  --no-liveness-probe \
+  --startup-probe="httpGet.path=/health.php,periodSeconds=2,timeoutSeconds=1,failureThreshold=20" \
   --quiet
 
 # Get the service URL
