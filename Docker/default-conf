@@ -1,11 +1,8 @@
 
 server {
 	listen 80 default_server;
-	listen 443 ssl;
 	listen [::]:80 default_server;
 	root    /cstimer/dist/;
-    ssl_certificate     /cstimer/Docker/ssl-selfsigned.crt;
-    ssl_certificate_key /cstimer/Docker/ssl-selfsigned.key;
 	index index.php;
 	
 	location ~ [^/]\.php(/|$) { 

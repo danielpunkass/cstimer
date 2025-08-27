@@ -48,7 +48,7 @@ RUN echo "pm = static" >> /usr/local/etc/php-fpm.d/www.conf \
     && echo "catch_workers_output = yes" >> /usr/local/etc/php-fpm.d/www.conf
     
 # Configure the host with nginx (Cloud Run optimized)
-COPY ./Docker/cloudrun-nginx.conf /etc/nginx/http.d/default.conf
+COPY ./Docker/default-conf /etc/nginx/http.d/default.conf
 
 # Add health check endpoint
 RUN echo '<?php http_response_code(200); echo "OK"; ?>' > /cstimer/dist/health.php \
