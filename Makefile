@@ -158,13 +158,17 @@ langPHP = $(addprefix $(dest)/lang/, $(shell ls $(src)/lang/ | grep .*\.php))
 
 version := $(shell git describe --tags --always 2>/dev/null || echo Unspecified)
 
-all: $(cstimer) $(twisty) $(css) $(langJS) $(langPHP) version $(dest)/cache.manifest $(dest)/sw.js
+all: $(cstimer) $(twisty) $(css) $(langJS) $(langPHP) version $(dest)/timer.php $(dest)/cache.manifest $(dest)/sw.js
 
 module: $(cstimer_module)
 
 version: $(langPHP)
 	@echo "Build Version: $(version)"
 	@sed -i 's/\$$version = "[^"]*"/\$$version = "$(version)"/g' $(dest)/lang/langDet.php
+
+$(dest)/timer.php: $(src)/timer.php
+	@mkdir -p $(dir $@)
+	@cp $< $@
 
 clean:
 	rm -f $(cstimer) $(twisty) $(css) $(langJS) $(langPHP)
@@ -203,12 +207,14 @@ $(langJS): $(dest)/lang/%: $(src)/lang/%
 
 $(dest)/cache.manifest: $(cache) version
 	@echo $@
+	@cp $(src)/cache.manifest $@
 	@sed -i '$$d' $@
 	@echo -n \# MD5= >> $@
 	@cat $(cache) | md5sum | awk '{print $$1}' >> $@
 
 $(dest)/sw.js: $(cache) version
 	@echo $@
+	@cp $(src)/sw.js $@
 	@sed -i '$$d' $@
 	@echo 'var CACHE_NAME = "cstimer_cache_'`cat $(cache) | md5sum | awk '{print $$1}'`'";' >> $@
 

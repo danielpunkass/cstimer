@@ -16,14 +16,6 @@ IMAGE_NAME="gcr.io/${PROJECT_ID}/${SERVICE_NAME}"
 TAG="${TAG:-$(date +%Y%m%d-%H%M%S)}"
 FULL_IMAGE_NAME="${IMAGE_NAME}:${TAG}"
 
-# Build dist files first
-echo "🔨 Building dist files..."
-if [ -f Makefile ]; then
-  make dist
-  echo "✅ Dist files built successfully"
-else
-  echo "⚠️  No Makefile found, skipping make dist"
-fi
 
 echo "🐳 Building Docker image: ${FULL_IMAGE_NAME}"
 

@@ -3,7 +3,7 @@ FROM alpine:latest AS build
 # Update packages and install dependencies
 RUN apk update && apk upgrade && apk add --no-cache \
 	make \
-    openjdk17 \
+    openjdk21 \
     openssl \
 	&& rm -rf /var/cache/apk/*
 
@@ -12,7 +12,17 @@ WORKDIR /cstimer
 
 # Either build and serve dist or serve local
 ARG DEPLOY=1
-RUN [[ "$DEPLOY" -eq 1 ]] && make dist || rm -rf dist/*
+RUN if [[ "$DEPLOY" -eq 1 ]]; then \
+        echo "=== Building production dist files ===" && \
+        mkdir -p dist/css dist/js dist/lang && \
+        make all && \
+        echo "=== Build completed successfully ===" && \
+        ls -la dist/ && \
+        echo "=== Dist contents ==="; \
+    else \
+        echo "Development mode - clearing dist files" && \
+        rm -rf dist/*; \
+    fi
 
 # Start a new image to avoid the cruft of java stuff required to build above
 FROM php:fpm-alpine
@@ -37,8 +47,8 @@ RUN echo "pm = static" >> /usr/local/etc/php-fpm.d/www.conf \
     && echo "request_terminate_timeout = 300s" >> /usr/local/etc/php-fpm.d/www.conf \
     && echo "catch_workers_output = yes" >> /usr/local/etc/php-fpm.d/www.conf
     
-# Configure the host with nginx
-COPY ./Docker/default-conf /etc/nginx/http.d/default.conf
+# Configure the host with nginx (Cloud Run optimized)
+COPY ./Docker/cloudrun-nginx.conf /etc/nginx/http.d/default.conf
 
 # Add health check endpoint
 RUN echo '<?php http_response_code(200); echo "OK"; ?>' > /cstimer/dist/health.php \
@@ -48,7 +58,7 @@ ARG DEPLOY=1
 RUN [[ "$DEPLOY" -eq 1 ]] || sed -i 's|/cstimer/dist|/cstimer/src|g' /etc/nginx/http.d/default.conf
 RUN [[ "$DEPLOY" -eq 0 ]] || sed -i 's|index index.php|index timer.php|g' /etc/nginx/http.d/default.conf
 
-# Expose HTTP and HTTPS
-EXPOSE 80 443
+# Expose HTTP only (Cloud Run handles HTTPS)
+EXPOSE 80
 
 ENTRYPOINT ["sh", "-c", "nginx && php-fpm"]
