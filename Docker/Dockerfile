@@ -35,9 +35,10 @@ COPY --from=build /cstimer/Docker/ssl-selfsigned.key /cstimer/Docker/ssl-selfsig
 RUN apk update && apk upgrade && apk add --no-cache \
 	nginx \
     openssl \
+    gettext \
 	&& rm -rf /var/cache/apk/* \
 	&& find /bin -type f ! -name "sed" ! -name "sh" ! -name "busybox" -exec rm -v {} + \
-	&& find /usr/bin -type f ! -name "sed" ! -name "sh" -exec rm -v {} +
+	&& find /usr/bin -type f ! -name "sed" ! -name "sh" ! -name "envsubst" -exec rm -v {} +
 
 # Optimize PHP-FPM for faster startup and better cold start performance
 RUN echo "pm = static" >> /usr/local/etc/php-fpm.d/www.conf \
@@ -59,6 +60,6 @@ RUN [[ "$DEPLOY" -eq 1 ]] || sed -i 's|/cstimer/dist|/cstimer/src|g' /etc/nginx/
 RUN [[ "$DEPLOY" -eq 0 ]] || sed -i 's|index index.php|index timer.php|g' /etc/nginx/http.d/default.conf
 
 # Expose HTTP only (Cloud Run handles HTTPS)
-EXPOSE 80
+EXPOSE ${PORT}
 
-ENTRYPOINT ["sh", "-c", "nginx && php-fpm"]
+ENTRYPOINT ["sh", "-c", "envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /tmp/nginx.conf && mv /tmp/nginx.conf /etc/nginx/http.d/default.conf && nginx && php-fpm"]

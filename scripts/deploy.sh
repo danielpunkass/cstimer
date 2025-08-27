@@ -21,9 +21,9 @@ MIN_INSTANCES="${MIN_INSTANCES:-0}"
 MAX_INSTANCES="${MAX_INSTANCES:-10}"
 MEMORY="${MEMORY:-512Mi}"
 CPU="${CPU:-1}"
-PORT="${PORT:-80}"
 TIMEOUT="${TIMEOUT:-600}"
 STARTUP_TIMEOUT="${STARTUP_TIMEOUT:-240}"
+HEALTH_CHECK_PERIOD="${HEALTH_CHECK_PERIOD:-14400}"  # 4 hours for cost optimization with MIN_INSTANCES=0
 
 echo "🚀 Deploying ${SERVICE_NAME} to Google Cloud Run"
 echo "   Project: ${PROJECT_ID}"
@@ -37,7 +37,6 @@ gcloud run deploy "${SERVICE_NAME}" \
   --region="${REGION}" \
   --project="${PROJECT_ID}" \
   --allow-unauthenticated \
-  --port="${PORT}" \
   --memory="${MEMORY}" \
   --cpu="${CPU}" \
   --min-instances="${MIN_INSTANCES}" \
@@ -46,6 +45,7 @@ gcloud run deploy "${SERVICE_NAME}" \
   --cpu-boost \
   --execution-environment=gen2 \
   --set-env-vars="DEPLOY=1" \
+  --http-health-check-period="${HEALTH_CHECK_PERIOD}s" \
   --quiet
 
 # Get the service URL
