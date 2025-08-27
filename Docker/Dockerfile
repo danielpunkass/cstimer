@@ -7,7 +7,12 @@ RUN apk update && apk upgrade && apk add --no-cache \
     openssl \
 	&& rm -rf /var/cache/apk/*
 
-COPY . /cstimer
+COPY src /cstimer/src
+COPY dist /cstimer/dist
+COPY Makefile /cstimer
+COPY lib /cstimer/lib
+COPY Docker /cstimer/Docker
+
 WORKDIR /cstimer
 
 # Either build and serve dist or serve local
