@@ -1,4 +1,4 @@
-<h1>jalkTimer version <?php echo $version;?> - amateur speedcubing!</h1>
+<h1>jalkTimer version <?php echo $version;?> - amateur zpeedcubing!</h1>
 <?php include('lang.php') ?>
 <h2>Introduction</h2>
 <p>csTimer is a professional timing program designed for Rubik's cube speedsolvers, it provides:</p>

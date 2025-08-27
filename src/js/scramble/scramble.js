@@ -250,7 +250,7 @@ var scramble = ISCSTIMER && execMain(function(rn, rndEl) {
 	var typeExIn = '333';
 	var isDisplayLast = false;
 	var lastClick = $('<span />').html(SCRAMBLE_LAST);
-	var nextClick = $('<span />').addClass('click').html(SCRAMBLE_NEXT).click(procNextClick);
+	var nextClick = $('<span />').addClass('click').html("HIZ").click(procNextClick);
 
 	function procLastClick() {
 		isDisplayLast = true;
