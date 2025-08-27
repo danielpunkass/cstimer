@@ -52,9 +52,11 @@ After [cb6c4266](https://github.com/cs0x7f/cstimer/commit/cb6c42667dc5e68717b2d5
 
 # Docker
 
-To run csTimer in a Docker container:
+## Local Development
 
-```
+To run csTimer in a Docker container locally:
+
+```bash
 cd Docker
 docker compose up --build
 ```
@@ -63,7 +65,36 @@ Now you can access csTimer at http://localhost:8080/ or https://localhost:8888/.
 
 To build the "dist" version of the app and serve it locally, build with `DEPLOY=1` defined:
 
-```
+```bash
 cd Docker
 DEPLOY=1 docker compose up --build
 ```
+
+## Google Cloud Deployment
+
+### Quick Start
+
+1. **Setup (one-time):**
+   ```bash
+   cp .env.example .env
+   # Edit .env - set your PROJECT_ID
+   gcloud auth login
+   ```
+
+2. **Deploy everything:**
+   ```bash
+   export PROJECT_ID=your-gcp-project-id
+   ./scripts/deploy-all.sh
+   ```
+
+### What it does:
+- Builds optimized Docker image with faster PHP-FPM startup
+- Pushes to Google Container Registry
+- Deploys to Cloud Run with gen2 + CPU boost for faster cold starts
+- Scales to 0 when idle (saves money) but prevents 502 errors
+- Tests deployment and provides service URL
+
+### Individual commands:
+- `./scripts/build.sh` - Just build and push image
+- `./scripts/deploy.sh` - Just deploy existing image
+- `./scripts/health-check.sh` - Test cold start performance

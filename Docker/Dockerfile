@@ -28,9 +28,21 @@ RUN apk update && apk upgrade && apk add --no-cache \
 	&& rm -rf /var/cache/apk/* \
 	&& find /bin -type f ! -name "sed" ! -name "sh" ! -name "busybox" -exec rm -v {} + \
 	&& find /usr/bin -type f ! -name "sed" ! -name "sh" -exec rm -v {} +
+
+# Optimize PHP-FPM for faster startup and better cold start performance
+RUN echo "pm = static" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "pm.max_children = 3" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "pm.start_servers = 3" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "pm.process_idle_timeout = 60s" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "request_terminate_timeout = 300s" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "catch_workers_output = yes" >> /usr/local/etc/php-fpm.d/www.conf
     
 # Configure the host with nginx
 COPY ./Docker/default-conf /etc/nginx/http.d/default.conf
+
+# Add health check endpoint
+RUN echo '<?php http_response_code(200); echo "OK"; ?>' > /cstimer/dist/health.php \
+    && echo '<?php http_response_code(200); echo "OK"; ?>' > /cstimer/src/health.php
 
 ARG DEPLOY=1
 RUN [[ "$DEPLOY" -eq 1 ]] || sed -i 's|/cstimer/dist|/cstimer/src|g' /etc/nginx/http.d/default.conf
