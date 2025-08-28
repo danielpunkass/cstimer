@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Aktualizacja czasu jest';
 var PROPERTY_TIMEU_STR = 'aktualizacja|0.1s|sekunda|inspekcja|brak';
 var PROPERTY_PRETIME = 'Czas trzymania spacji (sekundy)';
 var PROPERTY_ENTERING = 'wprowadzanie czasów poprzez';
-var PROPERTY_ENTERING_STR = 'timer|wprowadź czas|stackmat|MoYuTimer|virtual|bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'timer|wprowadź czas|stackmat|MoYuTimer|virtual|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Jednostka przy wstawaniu liczby całkowitej';
 var PROPERTY_INTUNIT_STR = 'sekundy|setne sekundy|milisekundy';
 var PROPERTY_COLOR = 'wybierz kolor motywu';
@@ -151,7 +151,7 @@ var SCRAMBLE_LENGTH = 'długość';
 var SCRAMBLE_INPUT = 'Wprowadź algorytm(y) mieszania';
 var SCRAMBLE_INPUTTYPE = 'Typ pomieszania';
 var PROPERTY_VRCSPEED = 'Prędkość bazowa VRC (tps)';
-var PROPERTY_VRCORI = 'Virtual cube orientation';
+var PROPERTY_VRCORI = 'Wirtualna orientacja kostki';
 var PROPERTY_VRCMP = 'wielofazowe';
 var PROPERTY_VRCMPS = 'None|CFOP|CF+OP|CFFFFOP|CFFFFOOPP|Roux';
 var PROPERTY_GIIKERVRC = 'Pokaż wirtualną kostkę bluetooth';
@@ -396,6 +396,10 @@ var scrdata = [
 		['stan losowy', "rediso", 0],
 		['MoYu', "redim", 8],
 		['losowy ruch', "redi", 20]
+	]],
+	['Dino Cube', [
+		['stan losowy', "dinoso", 0],
+		['optymalny', "dinoo", 0]
 	]],
 	['Ivy cube', [
 		['stan losowy', "ivyso", 0],

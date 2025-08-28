@@ -1,6 +1,6 @@
 "use strict";
 
-var GiikerCube = execMain(function() {
+function BtDeviceGroupFactory() {
 
 	/* { prefix: cubeModel } */
 	var cubeModels = {};
@@ -25,8 +25,15 @@ var GiikerCube = execMain(function() {
 		return uuid.toUpperCase();
 	}
 
-	function matchUUID(uuid1, uuid2) {
-		return toUuid128(uuid1) == toUuid128(uuid2);
+	function findUUID(elems, uuid) {
+		uuid = toUuid128(uuid);
+		for (var i = 0; i < elems.length; i++) {
+			var elem = elems[i]
+			if (toUuid128(elem.uuid) == uuid) {
+				return elem;
+			}
+		}
+		return null;
 	}
 
 	function waitForAdvs() {
@@ -54,7 +61,7 @@ var GiikerCube = execMain(function() {
 	function onHardwareEvent(info, event) {
 		var res = Promise.resolve();
 		if (info == 'disconnect') {
-			res = Promise.resolve(stop());
+			res = Promise.resolve(stop(true));
 		}
 		return res.then(function () {
 			return typeof evtCallback == 'function' && evtCallback(info, event);
@@ -63,20 +70,11 @@ var GiikerCube = execMain(function() {
 
 	var onDisconnect = onHardwareEvent.bind(null, 'disconnect');
 
-	function init(timer) {
-		if (!window.navigator || !window.navigator.bluetooth) {
-			alert(GIIKER_NOBLEMSG);
-			return Promise.reject();
-		}
-		var chkAvail = Promise.resolve(true);
-		if (window.navigator.bluetooth.getAvailability) {
-			chkAvail = window.navigator.bluetooth.getAvailability();
-		}
-
-		return chkAvail.then(function(available) {
-			giikerutil.log('[bluetooth] is available', available);
-			if (!available) {
-				return Promise.reject(GIIKER_NOBLEMSG);
+	function init(reconnect) {
+		return giikerutil.chkAvail().then(function() {
+			if (_device && reconnect) {
+				giikerutil.log('[bluetooth]', 'reconnecting...', _device);
+				return waitUntilDeviceAvailable(_device);
 			}
 			var filters = Object.keys(cubeModels).map((prefix) => ({ namePrefix: prefix }));
 			var opservs = [...new Set(Array.prototype.concat.apply([], Object.values(cubeModels).map((cubeModel) => cubeModel.opservs || [])))];
@@ -105,11 +103,38 @@ var GiikerCube = execMain(function() {
 		});
 	}
 
-	function stop() {
+	// Wait until target device start sending bluetooth advertisiment packets
+	function waitUntilDeviceAvailable(device) {
+		var abortController = new AbortController();
+		return new Promise(function (resolve, reject) {
+			if (!device.watchAdvertisements) {
+				reject("Bluetooth Advertisements API is not supported by this browser");
+			} else {
+				var onAdvEvent = function (event) {
+					DEBUG && console.log('[bluetooth] received advertisement packet from device', event);
+					delete device.stopWaiting;
+					device.removeEventListener('advertisementreceived', onAdvEvent);
+					abortController.abort();
+					resolve(device);
+				};
+				device.stopWaiting = function () {
+					DEBUG && console.log('[bluetooth] cancel waiting for device advertisements');
+					delete device.stopWaiting;
+					device.removeEventListener('advertisementreceived', onAdvEvent);
+					abortController.abort();
+				}
+				device.addEventListener('advertisementreceived', onAdvEvent);
+				device.watchAdvertisements({ signal: abortController.signal });
+				DEBUG && console.log('[bluetooth] start waiting for device advertisement packet');
+			}
+		});
+	}
+
+	function stop(isHardwareEvent) {
 		if (!_device) {
 			return Promise.resolve();
 		}
-		return Promise.resolve(cube && cube.clear()).then(function () {
+		return Promise.resolve(cube && cube.clear(isHardwareEvent)).then(function () {
 			_device.removeEventListener('gattserverdisconnected', onDisconnect);
 			_device.gatt.disconnect();
 			_device = null;
@@ -137,11 +162,30 @@ var GiikerCube = execMain(function() {
 			});
 		},
 		regCubeModel: regCubeModel,
-		matchUUID: matchUUID,
+		findUUID: findUUID,
 		waitForAdvs: waitForAdvs,
 		onDisconnect: onDisconnect,
 		callback: function() {
 			return callback.apply(null, arguments);
 		}
 	};
-});
+}
+
+var GiikerCube = execMain(BtDeviceGroupFactory);
+
+var BluetoothTimer = execMain(BtDeviceGroupFactory);
+
+BluetoothTimer.CONST = (function() {
+	var State = {};
+	State.DISCONNECT = 0;  // Fired when timer is disconnected from bluetooth
+	State.GET_SET = 1;     // Grace delay is expired and timer is ready to start
+	State.HANDS_OFF = 2;   // Hands removed from the timer before grace delay expired
+	State.RUNNING = 3;     // Timer is running
+	State.STOPPED = 4;     // Timer is stopped, this event includes recorded time
+	State.IDLE = 5;        // Timer is reset and idle
+	State.HANDS_ON = 6;    // Hands are placed on the timer
+	State.FINISHED = 7;    // Timer moves to this state immediately after STOPPED
+	State.INSPECTION = 8;
+	State.GAN_RESET = 9;
+	return State;
+})();

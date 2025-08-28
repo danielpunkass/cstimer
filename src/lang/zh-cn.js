@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = '计时器更新方式';
 var PROPERTY_TIMEU_STR = '实时|0.1秒|到秒|仅观察|隐藏';
 var PROPERTY_PRETIME = '开始前按住空格时间（秒）';
 var PROPERTY_ENTERING = '产生成绩通过';
-var PROPERTY_ENTERING_STR = '计时器|手动输入|stackmat|MoYuTimer|虚拟魔方|蓝牙魔方|qCube|Gan计时器|顶层训练';
+var PROPERTY_ENTERING_STR = '计时器|手动输入|stackmat|MoYuTimer|虚拟魔方|蓝牙魔方|qCube|蓝牙计时器|顶层训练';
 var PROPERTY_INTUNIT = '输入整数时的单位';
 var PROPERTY_INTUNIT_STR = '秒|百分秒|毫秒';
 var PROPERTY_COLOR = '选择颜色主题';
@@ -396,6 +396,10 @@ var scrdata = [
 		['随机状态', "rediso", 0],
 		['MoYu', "redim", 8],
 		['随机转动', "redi", 20]
+	]],
+	['Dino Cube', [
+		['随机状态', "dinoso", 0],
+		['最少步', "dinoo", 0]
 	]],
 	['枫叶魔方', [
 		['随机状态', "ivyso", 0],

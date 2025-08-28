@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Timeruppdateringen är';
 var PROPERTY_TIMEU_STR = 'uppdatera|0.1s|sekunder|inspektion|ingen';
 var PROPERTY_PRETIME = 'Tid för att hålla mellanslagstangenten nere(sekund(er))';
 var PROPERTY_ENTERING = 'Ange tider med';
-var PROPERTY_ENTERING_STR = 'timer|mata in|stackmat|MoYu timer|virtuell|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'timer|mata in|stackmat|MoYu timer|virtuell|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Enhet vid inmatning av heltal';
 var PROPERTY_INTUNIT_STR = 'sekund|centisekund|millisekund';
 var PROPERTY_COLOR = 'Välj färgtema';
@@ -396,6 +396,10 @@ var scrdata = [
 		['Slumpmässigt tillstånd', "rediso", 0],
 		['MoYu', "redim", 8],
 		['Slumpmässigt drag', "redi", 20]
+	]],
+	['Dino Cube', [
+		['Slumpmässigt tillstånd', "dinoso", 0],
+		['Optimal', "dinoo", 0]
 	]],
 	['Ivy cube', [
 		['Slumpmässigt tillstånd', "ivyso", 0],

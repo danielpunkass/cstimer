@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'atualização do cronômetro';
 var PROPERTY_TIMEU_STR = 'padrão|0.1s|segundos|inspeção|nenhuma';
 var PROPERTY_PRETIME = 'tempo mantendo a barra de espaços pressionada (segundo(s))';
 var PROPERTY_ENTERING = 'inserção de tempos';
-var PROPERTY_ENTERING_STR = 'cronômetro|digitação|stackmat|Timer da MoYu|puzzle virtual|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'cronômetro|digitação|stackmat|Timer da MoYu|puzzle virtual|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Unit when entering an integer';
 var PROPERTY_INTUNIT_STR = 'second|centisecond|millisecond';
 var PROPERTY_COLOR = 'escolha um tema de cores';
@@ -396,6 +396,10 @@ var scrdata = [
 		['random state', "rediso", 0],
 		['MoYu', "redim", 8],
 		['movimento aleatório', "redi", 20]
+	]],
+	['Dino Cube', [
+		['random state', "dinoso", 0],
+		['optimal', "dinoo", 0]
 	]],
 	['Ivy cube', [
 		['random state', "ivyso", 0],

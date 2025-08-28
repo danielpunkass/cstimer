@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Timer oppdatering er';
 var PROPERTY_TIMEU_STR = 'oppdater|0.1s|sekunder|inspeksjon|ingen';
 var PROPERTY_PRETIME = 'tid å holde mellomromstasten nede(sekund(er))';
 var PROPERTY_ENTERING = 'Skriv inn tider med';
-var PROPERTY_ENTERING_STR = 'Tidtaker|Skrive|Stackmat|MoYuTidtaker|virtuell|bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'Tidtaker|Skrive|Stackmat|MoYuTidtaker|virtuell|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Enhet når du går inn i et heltall';
 var PROPERTY_INTUNIT_STR = 'Sekund|deltidsekund|millisikund';
 var PROPERTY_COLOR = 'velg fargetema';
@@ -396,6 +396,10 @@ var scrdata = [
 		['tilfeldig tilstand', "rediso", 0],
 		['MoYu', "redim", 8],
 		['Tilfeldig trekk', "redi", 20]
+	]],
+	['Dino Cube', [
+		['tilfeldig tilstand', "dinoso", 0],
+		['Optimalt', "dinoo", 0]
 	]],
 	['Ivy kube', [
 		['tilfeldig tilstand', "ivyso", 0],

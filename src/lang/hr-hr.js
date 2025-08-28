@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'prikaz štoperice je';
 var PROPERTY_TIMEU_STR = 'normalan|0.1s|sekunde|inspekcija|bez prikaza';
 var PROPERTY_PRETIME = 'vrijeme držanja tipke space" (sekunda/e)"';
 var PROPERTY_ENTERING = 'unošenje vremena s/sa';
-var PROPERTY_ENTERING_STR = 'štopericom|utipkavanjem|stackmat štoperica|MoYuTimer|virtualno|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'štopericom|utipkavanjem|stackmat štoperica|MoYuTimer|virtualno|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Mjera prilikom unosa brojčanog tipa podatka';
 var PROPERTY_INTUNIT_STR = 'sekunda|stotinka|milisekunda';
 var PROPERTY_COLOR = 'odaberi temu';
@@ -396,6 +396,10 @@ var scrdata = [
 		['nasumično stanje', "rediso", 0],
 		['MoYu', "redim", 8],
 		['nasumični potez', "redi", 20]
+	]],
+	['Dino Cube', [
+		['nasumično stanje', "dinoso", 0],
+		['optimalno', "dinoo", 0]
 	]],
 	['Ivy kocka', [
 		['nasumično stanje', "ivyso", 0],

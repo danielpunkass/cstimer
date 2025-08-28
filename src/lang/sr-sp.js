@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'timer update is';
 var PROPERTY_TIMEU_STR = 'update|0.1s|seconds|inspection|none';
 var PROPERTY_PRETIME = 'time of keeping space down(second(s))';
 var PROPERTY_ENTERING = 'entering in times with';
-var PROPERTY_ENTERING_STR = 'timer|typing|stackmat|MoYuTimer|virtual|bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'timer|typing|stackmat|MoYuTimer|virtual|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Unit when entering an integer';
 var PROPERTY_INTUNIT_STR = 'second|centisecond|millisecond';
 var PROPERTY_COLOR = 'Изаберите боју теме';
@@ -396,6 +396,10 @@ var scrdata = [
 		['random state', "rediso", 0],
 		['MoYu', "redim", 8],
 		['Насумичан потез', "redi", 20]
+	]],
+	['Dino Cube', [
+		['random state', "dinoso", 0],
+		['optimal', "dinoo", 0]
 	]],
 	['Ivy cube', [
 		['random state', "ivyso", 0],

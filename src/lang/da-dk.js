@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Timer opdatering er';
 var PROPERTY_TIMEU_STR = 'Opdatering|0.1s|sekunder|inspektion|ingen';
 var PROPERTY_PRETIME = 'Tid at holde mellemrumsknappen inde(sekunder(s))';
 var PROPERTY_ENTERING = 'Put tid ind med';
-var PROPERTY_ENTERING_STR = 'timer|skrive|stackmat|MoYuTimer|virtuel|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'timer|skrive|stackmat|MoYuTimer|virtuel|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Enhed ved indtastning af heltal';
 var PROPERTY_INTUNIT_STR = 'sekund|centisekund|milisekund';
 var PROPERTY_COLOR = 'vælg farve tema';
@@ -396,6 +396,10 @@ var scrdata = [
 		['tilfældig tilstand', "rediso", 0],
 		['MoYu', "redim", 8],
 		['tilfældig træk', "redi", 20]
+	]],
+	['Dino Cube', [
+		['tilfældig tilstand', "dinoso", 0],
+		['Optimal', "dinoo", 0]
 	]],
 	['Ivy Terning', [
 		['tilfældig tilstand', "ivyso", 0],

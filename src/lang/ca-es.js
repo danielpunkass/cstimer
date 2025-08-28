@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Actualització de temporitzador';
 var PROPERTY_TIMEU_STR = 'Continu|0,1s|Segons|Inspecció|Res';
 var PROPERTY_PRETIME = 'Temps d\'espera de l\'espai(Segon(s))';
 var PROPERTY_ENTERING = 'Entrar temps amb';
-var PROPERTY_ENTERING_STR = 'Cronòmetre|Manual|StackMat|Cronòmetre MoYu|Virtual|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'Cronòmetre|Manual|StackMat|Cronòmetre MoYu|Virtual|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Unitat en registrar un nombre enter';
 var PROPERTY_INTUNIT_STR = 'segon|centsegon|mil·lisegon';
 var PROPERTY_COLOR = 'Seleciona tema de color';
@@ -396,6 +396,10 @@ var scrdata = [
 		['estat aleatori', "rediso", 0],
 		['MoYu', "redim", 8],
 		['moviment aleatori', "redi", 20]
+	]],
+	['Dino Cube', [
+		['estat aleatori', "dinoso", 0],
+		['òptim', "dinoo", 0]
 	]],
 	['Ivy Cube', [
 		['estat aleatori', "ivyso", 0],

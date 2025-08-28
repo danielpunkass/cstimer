@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'Stopwatch update is';
 var PROPERTY_TIMEU_STR = 'update|0.1s|seconden|inspectie|geen';
 var PROPERTY_PRETIME = 'Spatiebalk ingedrukt houden voor (seconde(n))';
 var PROPERTY_ENTERING = 'Tijden meten met';
-var PROPERTY_ENTERING_STR = 'stopwatch|typen|stackmat|MoYuTimer|virtueel|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'stopwatch|typen|stackmat|MoYuTimer|virtueel|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Unit when entering an integer';
 var PROPERTY_INTUNIT_STR = 'second|centisecond|millisecond';
 var PROPERTY_COLOR = 'Selecteer kleurenschema';
@@ -396,6 +396,10 @@ var scrdata = [
 		['willekeurige staat', "rediso", 0],
 		['MoYu', "redim", 8],
 		['willekeurige draai', "redi", 20]
+	]],
+	['Dino Cube', [
+		['willekeurige staat', "dinoso", 0],
+		['optimaal', "dinoo", 0]
 	]],
 	['Ivy cube', [
 		['willekeurige staat', "ivyso", 0],

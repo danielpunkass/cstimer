@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'обновление таймера';
 var PROPERTY_TIMEU_STR = 'обновление|0.1с|секунды|рассмотр|нет';
 var PROPERTY_PRETIME = 'время пространства(секунд)';
 var PROPERTY_ENTERING = 'вставлять время с';
-var PROPERTY_ENTERING_STR = 'таймер|писать|stackmat|MoYuTimer|виртуально|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'таймер|писать|stackmat|MoYuTimer|виртуально|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Единица измерения при вводе целого числа';
 var PROPERTY_INTUNIT_STR = 'секунда|наносекунда|миллисекунда';
 var PROPERTY_COLOR = 'выбрать цветовую тему';
@@ -396,6 +396,10 @@ var scrdata = [
 		['случайное состояние', "rediso", 0],
 		['Moyu', "redim", 8],
 		['случайный ход', "redi", 20]
+	]],
+	['Dino Cube', [
+		['случайное состояние', "dinoso", 0],
+		['оптимально', "dinoo", 0]
 	]],
 	['Иви-куб', [
 		['случайное состояние', "ivyso", 0],

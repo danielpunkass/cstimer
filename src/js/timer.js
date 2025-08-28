@@ -434,9 +434,9 @@ var timer = execMain(function(regListener, regProp, getProp, pretty, ui, pushSig
 						return;
 					}
 				} else if (status == -2) {
-					var time = now;
-					var insTime = checkUseIns() ? (time - startTime) : 0;
-					startTime = time;
+					lastDown = now;
+					var insTime = checkUseIns() ? (now - startTime) : 0;
+					startTime = now;
 					curTime = [insTime > 17000 ? -1 : (insTime > 15000 ? 2000 : 0)];
 					setStatus(getProp('phases'));
 					if (isTrain && tools.getCurPuzzle() == '333') {
@@ -615,7 +615,7 @@ var timer = execMain(function(regListener, regProp, getProp, pretty, ui, pushSig
 		// right Ctrl: 257
 
 		var keyCode = e.which;
-		if (keyCode == 17) { // ctrl
+		if (keyCode == 16 || keyCode == 17 || keyCode == 18) { // ctrl or shift or alt
 			var origE = e.originalEvent;
 			if (origE.location == 1 || origE.keyLocation == 1) {
 				keyCode = 256;
@@ -658,7 +658,7 @@ var timer = execMain(function(regListener, regProp, getProp, pretty, ui, pushSig
 				timer.stackmat.onkeydown(keyCode, e);
 				break;
 			case 'b':
-				timer.gan.onkeydown(keyCode, e);
+				timer.bttimer.onkeydown(keyCode, e);
 				break;
 			case 'i':
 				timer.input.onkeydown(keyCode, e);
@@ -699,10 +699,12 @@ var timer = execMain(function(regListener, regProp, getProp, pretty, ui, pushSig
 				timer.stackmat.onkeyup(keyCode, e);
 				break;
 			case 'b':
-				timer.gan.onkeyup(keyCode, e);
+				timer.bttimer.onkeyup(keyCode, e);
 				break;
 			case 'i':
 				timer.input.onkeyup(keyCode, e);
+			case 'g':
+				timer.giiker.onkeyup(keyCode, e);
 				break;
 		}
 	}
@@ -731,7 +733,7 @@ var timer = execMain(function(regListener, regProp, getProp, pretty, ui, pushSig
 			if (value[0] == 'input') {
 				timer.stackmat.setEnable(value[1]);
 				timer.giiker.setEnable(value[1]);
-				timer.gan.setEnable(value[1]);
+				timer.bttimer.setEnable(value[1]);
 				giikerutil.setEventCallback(giikerEvtCallback);
 			}
 			if (value[0] == 'showAvg') {

@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'タイマー更新間隔';
 var PROPERTY_TIMEU_STR = '随時|0.1s|秒|インスペクション|なし';
 var PROPERTY_PRETIME = 'スペースキーを押し続ける時間(秒)';
 var PROPERTY_ENTERING = 'タイム入力方法';
-var PROPERTY_ENTERING_STR = 'タイマー|タイピング|スタックマット|MoyuTimer|バーチャル|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'タイマー|タイピング|スタックマット|MoyuTimer|バーチャル|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = '整数を入力するときの単位';
 var PROPERTY_INTUNIT_STR = '1秒|1/100秒|ミリ秒';
 var PROPERTY_COLOR = 'カラーテーマの選択';
@@ -396,6 +396,10 @@ var scrdata = [
 		['ランダム状態', "rediso", 0],
 		['MoYu', "redim", 8],
 		['ランダムムーブ', "redi", 20]
+	]],
+	['Dino Cube', [
+		['ランダム状態', "dinoso", 0],
+		['最適', "dinoo", 0]
 	]],
 	['アイビーキューブ', [
 		['ランダム状態', "ivyso", 0],

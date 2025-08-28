@@ -3,14 +3,14 @@ var CANCEL_LANG = 'ביטול';
 var RESET_LANG = 'אתחל';
 var ABOUT_LANG = 'אודות';
 var ZOOM_LANG = 'שנה מרחק מתצוגה';
-var COPY_LANG = 'Copy';
+var COPY_LANG = 'העתק';
 var BUTTON_TIME_LIST = 'הצג<br>זמנים';
 var BUTTON_OPTIONS = 'אפשרויות';
 var BUTTON_EXPORT = 'ייצוא';
 var BUTTON_DONATE = 'תרום';
 var PROPERTY_SR = 'עם סשן';
 var PROPERTY_USEINS = 'השתמש בסקירת WCA';
-var PROPERTY_USEINS_STR = 'Always (down)|Always (up)|Except BLD (down)|Except BLD (up)|Never';
+var PROPERTY_USEINS_STR = 'תמיד (למטה)|תמיד (למעלה)|חוץ מבעיניים עצומות(למטה)|חוץ מבעיניים עצומות(למעלה)|אף פעם';
 var PROPERTY_SHOWINS = 'Show an icon when inspection is enabled';
 var PROPERTY_VOICEINS = 'התראה קולית של סקירת WCA';
 var PROPERTY_VOICEINS_STR = 'ללא|קול זכר|קול נקבה';
@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'עדכון הטיימר הוא';
 var PROPERTY_TIMEU_STR = 'עדכון|0.1ש|שניות|סקירה|ללא';
 var PROPERTY_PRETIME = 'זמן השארת מקש הרווח לחוץ(שנייה(ות))';
 var PROPERTY_ENTERING = 'הזן זמנים עם';
-var PROPERTY_ENTERING_STR = 'טיימר|הקלדה|Stackmat|טיימרמויו|וירטואלי|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'טיימר|הקלדה|Stackmat|טיימרמויו|וירטואלי|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'יחידה כשמכניסים מספר';
 var PROPERTY_INTUNIT_STR = 'שנייה|עשירית שנייה|מאית שנייה';
 var PROPERTY_COLOR = 'בחר צבע נושא';
@@ -397,6 +397,10 @@ var scrdata = [
 		['MoYu', "redim", 8],
 		['random move', "redi", 20]
 	]],
+	['Dino Cube', [
+		['random state', "dinoso", 0],
+		['optimal', "dinoo", 0]
+	]],
 	['Ivy cube', [
 		['random state', "ivyso", 0],
 		['optimal', "ivyo", 0],
@@ -522,7 +526,7 @@ var STATS_ALERTMG = 'שלב את כל השמנים בסשן [%f] לסוף של �
 var STATS_PROMPTSPL = 'כמות הזמנים האחרונים הנחתכים מסשן [%s]?';
 var STATS_ALERTSPL = 'לחתוך או להשאיר לפחות זמן אחד?';
 var STATS_AVG = 'ממוצע';
-var STATS_SUM = 'sum';
+var STATS_SUM = 'סכום';
 var STATS_SOLVE = 'פתירה';
 var STATS_TIME = 'זמן';
 var STATS_SESSION = 'סשן';
@@ -540,7 +544,7 @@ var STATS_XSESSION_SCR = 'כל ערבוב';
 var STATS_XSESSION_CALC = 'חשב';
 var STATS_RSFORSS = 'הראה סטטיסטיקות כשלוחצים על מספר פתירה';
 var PROPERTY_PRINTSCR = 'הראה ערבוב(ים) בסטטיסטיקות';
-var PROPERTY_PRINTCOMM = 'print comment(s) in statistics';
+var PROPERTY_PRINTCOMM = 'הדפיס הערה(ות) בסטטיסטיקה';
 var PROPERTY_PRINTDATE = 'הראה תאריך בסטטיסטיקות';
 var PROPERTY_SUMMARY = 'הראה סיכום לפני רשימת זמנים';
 var PROPERTY_IMRENAME = 'שנה שם סשן ישר אחרי יצירה';
@@ -550,8 +554,8 @@ var PROPERTY_SS2PHASES = 'restore multi-phase timing when switching session';
 var PROPERTY_STATINV = 'להפוך רשימת זמנים';
 var PROPERTY_STATSSUM = 'Show sum in time list';
 var PROPERTY_STATTHRES = 'Show target time for session best';
-var PROPERTY_STATBPA = 'Show best possible average (BPA)';
-var PROPERTY_STATWPA = 'Show worst possible average (WPA)';
+var PROPERTY_STATBPA = 'הצג את הממוצע הטוב ביותר האפשרי';
+var PROPERTY_STATWPA = 'הצג את הממוצע הגרוע ביותר האפשרי';
 var PROPERTY_STATAL = 'אינדקטורים סטטיסטיים';
 var PROPERTY_STATALU = 'אינדקטור סטטיסטי מותאם אישית';
 var PROPERTY_HLPBS = 'Highlight PBs';

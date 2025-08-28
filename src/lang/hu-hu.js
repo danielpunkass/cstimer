@@ -122,7 +122,7 @@ var PROPERTY_TIMEU = 'időmérő beállítása';
 var PROPERTY_TIMEU_STR = 'frissítés|0.1s|másodpercek|megnézés|nincs';
 var PROPERTY_PRETIME = 'a szóköz lenttartásának az ideje (másodpercben)';
 var PROPERTY_ENTERING = 'eredmény bevitele';
-var PROPERTY_ENTERING_STR = 'időmérővel|gépeléssel|stackmattel|MoYuTimer|virtuálisan|Bluetooth|qCube|GanTimer|last layer training';
+var PROPERTY_ENTERING_STR = 'időmérővel|gépeléssel|stackmattel|MoYuTimer|virtuálisan|Bluetooth Cube|qCube|Bluetooth Timer|last layer training';
 var PROPERTY_INTUNIT = 'Mértékegység egész megadásakor';
 var PROPERTY_INTUNIT_STR = 'másodperc|századmásodperc|ezredmásodperc';
 var PROPERTY_COLOR = 'színséma választása';
@@ -396,6 +396,10 @@ var scrdata = [
 		['véletlen állapot', "rediso", 0],
 		['MoYu', "redim", 8],
 		['véletlen mozdulat', "redi", 20]
+	]],
+	['Dino Cube', [
+		['véletlen állapot', "dinoso", 0],
+		['optimális', "dinoo", 0]
 	]],
 	['Ivy kocka', [
 		['véletlen állapot', "ivyso", 0],

@@ -31,7 +31,7 @@ logohint.js \
 timer.js \
 timer/input.js \
 timer/stackmat.js \
-timer/gan.js \
+timer/bttimer.js \
 timer/virtual.js \
 timer/giiker.js \
 solver/ftocta.js \
@@ -92,6 +92,7 @@ hardware/moyucube.js \
 hardware/moyu32cube.js \
 hardware/qiyicube.js \
 hardware/gantimer.js \
+hardware/qiyitimer.js \
 worker.js)
 
 cache = $(addprefix $(dest)/, \
@@ -181,6 +182,9 @@ local: all
 	cp $(dest)/js/twisty.js $(dest)/local/js/twisty.js
 	cp $(dest)/css/style.css $(dest)/local/css/style.css
 
+check: $(twistySrc) $(timerSrc)
+	@$(compile) --externs experiment/checkwrap.js $(src)/lang/en-us.js $(timerSrc) $(twistySrc) -O ADVANCED --checks-only --jscomp_off checkTypes
+
 $(cstimer): $(twisty) $(timerSrc)
 	@echo $@
 	@$(compile) $(debugoff) $(timerSrc) --js_output_file $(cstimer)
@@ -218,4 +222,4 @@ $(dest)/sw.js: $(cache) version
 	@sed -i '$$d' $@
 	@echo 'var CACHE_NAME = "cstimer_cache_'`cat $(cache) | md5sum | awk '{print $$1}'`'";' >> $@
 
-.PHONY: all clean version
+.PHONY: all clean version check

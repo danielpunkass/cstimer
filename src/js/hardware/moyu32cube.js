@@ -174,39 +174,16 @@ execMain(function() {
 	var MOYU32_CIC_LIST = mathlib.valuedArray(255, function (i) { return (i + 1) << 8 });
 
 	function initMac(forcePrompt, isWrongKey) {
-		if (deviceMac) {
-			var savedMacMap = JSON.parse(kernel.getProp('giiMacMap', '{}'));
-			var prevMac = savedMacMap[deviceName];
-			if (prevMac && prevMac.toUpperCase() == deviceMac.toUpperCase()) {
-				giikerutil.log('[Moyu32Cube] mac matched');
-			} else {
-				giikerutil.log('[Moyu32Cube] mac updated');
-				savedMacMap[deviceName] = deviceMac;
-				kernel.setProp('giiMacMap', JSON.stringify(savedMacMap));
-			}
-			initDecoder(deviceMac);
-		} else {
-			var savedMacMap = JSON.parse(kernel.getProp('giiMacMap', '{}'));
-			var mac = savedMacMap[deviceName];
-			if (!mac || forcePrompt) {
-				if (!mac && /^WCU_MY32_[0-9A-F]{4}$/.exec(deviceName)) {
-					mac = 'CF:30:16:00:' + deviceName.slice(9, 11) + ':' + deviceName.slice(11, 13);
-				}
-				mac = prompt((isWrongKey ? 'The MAC provided might be wrong!\n' : '') + GIIKER_REQMACMSG, mac || 'xx:xx:xx:xx:xx:xx');
-			}
-			var m = /^([0-9a-f]{2}[:-]){5}[0-9a-f]{2}$/i.exec(mac);
-			if (!m) {
-				logohint.push(LGHINT_BTINVMAC);
-				decoder = null;
-				return;
-			}
-			if (mac != savedMacMap[deviceName]) {
-				savedMacMap[deviceName] = mac;
-				kernel.setProp('giiMacMap', JSON.stringify(savedMacMap));
-			}
-			deviceMac = mac;
-			initDecoder(deviceMac);
+		var defaultMac = null;
+		if (/^WCU_MY32_[0-9A-F]{4}$/.exec(deviceName)) {
+			defaultMac = 'CF:30:16:00:' + deviceName.slice(9, 11) + ':' + deviceName.slice(11, 13);
 		}
+		deviceMac = giikerutil.reqMacAddr(forcePrompt, isWrongKey, deviceMac, defaultMac);
+		if (!deviceMac) {
+			decoder = null;
+			return;
+		}
+		initDecoder(deviceMac);
 	}
 
 	function init(device) {
@@ -238,16 +215,12 @@ execMain(function() {
 			giikerutil.log('[Moyu32Cube] got primary service', SERVICE_UUID);
 			return _service.getCharacteristics();
 		}).then(function (chrcts) {
-			for (var i = 0; i < chrcts.length; i++) {
-				var chrct = chrcts[i];
-				giikerutil.log('[Moyu32Cube] init find chrct', chrct.uuid);
-				if (GiikerCube.matchUUID(chrct.uuid, CHRT_UUID_READ)) {
-					_chrct_read = chrct;
-				} else if (GiikerCube.matchUUID(chrct.uuid, CHRT_UUID_WRITE)) {
-					_chrct_write = chrct;
-				}
+			giikerutil.log('[Moyu32Cube] find chrcts', chrcts);
+			_chrct_read = GiikerCube.findUUID(chrcts, CHRT_UUID_READ);
+			_chrct_write = GiikerCube.findUUID(chrcts, CHRT_UUID_WRITE);
+			if (!_chrct_read) {
+				return Promise.reject('[Moyu32Cube] Cannot find required characteristics');
 			}
-		}).then(function () {
 			_chrct_read.addEventListener('characteristicvaluechanged', onStateChanged);
 			return _chrct_read.startNotifications();
 		}).then(function () {
